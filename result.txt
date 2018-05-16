@@ -1,0 +1,45 @@
+{
+   "status": "ok",
+   "result": {
+      "output": " --- OK.\n Match tree built with 60 nodes.\n\nPDDL problem description loaded: \n\tDomain: BLOCKSWORLD\n\tProblem: BW-ABCDE\n\t#Actions: 60\n\t#Fluents: 41\nLandmarks found: 3\nStarting search with IW (time budget is 60 secs)...\nrel_plan size: 7\n#RP_fluents 11\nCaption\n{#goals, #UNnachieved,  #Achieved} -> IW(max_w)\n\n{3/3/0}:IW(1) -> [2][3][4][5]rel_plan size: 4\n#RP_fluents 7\n{3/2/1}:IW(1) -> [2][3]rel_plan size: 2\n#RP_fluents 4\n{3/1/2}:IW(1) -> [2][3]rel_plan size: 0\n#RP_fluents 0Plan found with cost: -2.16037e+22\nTotal time: -1.8999e-10\nNodes generated during search: 94\nNodes expanded during search: 54\nIW search completed\n",
+      "parse_status": "ok",
+      "type": "full",
+      "length": 8,
+      "plan": [
+         {
+            "action": "  (:action unstack\n    :parameters (d c)\n    :precondition\n      (and\n        (on d c)\n        (clear d)\n        (arm-free)\n      )\n    :effect\n      (and\n        (holding d)\n        (clear c)\n        (not\n          (clear d)\n        )\n        (not\n          (arm-free)\n        )\n        (not\n          (on d c)\n        )\n      )\n  )",
+            "name": "(unstack d c)"
+         },
+         {
+            "action": "  (:action put-down\n    :parameters (d)\n    :precondition\n      (holding d)\n    :effect\n      (and\n        (not\n          (holding d)\n        )\n        (clear d)\n        (arm-free)\n        (on-table d)\n      )\n  )",
+            "name": "(put-down d)"
+         },
+         {
+            "action": "  (:action pick-up\n    :parameters (b)\n    :precondition\n      (and\n        (clear b)\n        (on-table b)\n        (arm-free)\n      )\n    :effect\n      (and\n        (not\n          (on-table b)\n        )\n        (not\n          (clear b)\n        )\n        (not\n          (arm-free)\n        )\n        (holding b)\n      )\n  )",
+            "name": "(pick-up b)"
+         },
+         {
+            "action": "  (:action stack\n    :parameters (b d)\n    :precondition\n      (and\n        (holding b)\n        (clear d)\n      )\n    :effect\n      (and\n        (not\n          (holding b)\n        )\n        (not\n          (clear d)\n        )\n        (clear b)\n        (arm-free)\n        (on b d)\n      )\n  )",
+            "name": "(stack b d)"
+         },
+         {
+            "action": "  (:action pick-up\n    :parameters (c)\n    :precondition\n      (and\n        (clear c)\n        (on-table c)\n        (arm-free)\n      )\n    :effect\n      (and\n        (not\n          (on-table c)\n        )\n        (not\n          (clear c)\n        )\n        (not\n          (arm-free)\n        )\n        (holding c)\n      )\n  )",
+            "name": "(pick-up c)"
+         },
+         {
+            "action": "  (:action stack\n    :parameters (c a)\n    :precondition\n      (and\n        (holding c)\n        (clear a)\n      )\n    :effect\n      (and\n        (not\n          (holding c)\n        )\n        (not\n          (clear a)\n        )\n        (clear c)\n        (arm-free)\n        (on c a)\n      )\n  )",
+            "name": "(stack c a)"
+         },
+         {
+            "action": "  (:action pick-up\n    :parameters (e)\n    :precondition\n      (and\n        (clear e)\n        (on-table e)\n        (arm-free)\n      )\n    :effect\n      (and\n        (not\n          (on-table e)\n        )\n        (not\n          (clear e)\n        )\n        (not\n          (arm-free)\n        )\n        (holding e)\n      )\n  )",
+            "name": "(pick-up e)"
+         },
+         {
+            "action": "  (:action stack\n    :parameters (e c)\n    :precondition\n      (and\n        (holding e)\n        (clear c)\n      )\n    :effect\n      (and\n        (not\n          (holding e)\n        )\n        (not\n          (clear c)\n        )\n        (clear e)\n        (arm-free)\n        (on e c)\n      )\n  )",
+            "name": "(stack e c)"
+         }
+      ],
+      "planPath": "/tmp/solver_planning_domains_tmp_4Kmp3VR7u4df4/plan",
+      "logPath": "/tmp/solver_planning_domains_tmp_4Kmp3VR7u4df4/log"
+   }
+}
