@@ -22,6 +22,11 @@
          {"name":"clear","objectNames":["e"]},
          {"name":"clear","objectNames":["c"]},
          {"name":"holding","objectNames":["d"]}
+      ],
+      "add":[ 
+         {"name":"holding","objectNames":["d"]}
+      "remove":[
+          {"name":"holding","objectNames":["d"]}
       ]
    },
       {"items":[
