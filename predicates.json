@@ -1,4 +1,5 @@
 {
+   "objects":["a","b","c","d","e"],
    "stages":[
       {"items":[
          {"name":"on-table","objectNames":["a"]},
@@ -22,13 +23,7 @@
          {"name":"clear","objectNames":["e"]},
          {"name":"clear","objectNames":["c"]},
          {"name":"holding","objectNames":["d"]}
-      ],
-      "add":[ 
-         {"name":"holding","objectNames":["d"]}
-      "remove":[
-          {"name":"holding","objectNames":["d"]}
-      ]
-   },
+      ]},
       {"items":[
          {"name":"on-table","objectNames":["a"]},
          {"name":"on-table","objectNames":["b"]},
