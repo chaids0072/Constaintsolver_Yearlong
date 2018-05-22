@@ -1,5 +1,6 @@
-problem_bloacks.pddl 
-domain_blocks.pddl
-pddl.py  => Call Api to get the solution json and write in the result.txt
-predicates.json =>  The predicates that the colin need for visualistaion
-result.txt
+python main.py [dommainfile] [problemfile]
+
+The output file visualisation.json
+eg:
+python main.py domain_blocks.pddl test_problems/bw01.pdd;
+
