@@ -1,23 +1,34 @@
-def init_space(size):
-    array=[]
-    for i in range(size):
-        array.append(i)
-    return array
+"""This module contain all the customer funtion we designed to help position the objects"""
 
-def distributex(obj,space,spacebtw,width,remove):
+__all__ = ['init_space', 'distributex']
+
+def init_space(size):
+    """The funtion initialise an space for distributex function
+    Args:
+        size(int): the max number of item in space
+    Returns:
+        space: an array of integer
+    """
+    space = []
+    for i in range(size):
+        space.append(i)
+    return space
+
+
+def distributex(obj, space, spacebtw, width, remove):
+    """The function return the x location of object of an given space"""
     if not remove:
         if obj in space:
-            objindex=space.index(obj)
-            return objindex*(width+spacebtw)
+            objindex = space.index(obj)
+            return objindex * (width + spacebtw)
         else:
-            for num in range(len(space)):
-                if num==space[num]:
-                    space[num]=obj
-                    return num*(width+spacebtw)
+            for num, value in enumerate(space):
+                if num == value:
+                    space[num] = obj
+                    return num * (width + spacebtw)
     else:
         if obj in space:
-            objindex=space.index(obj)
-            space[objindex]=objindex
+            objindex = space.index(obj)
+            space[objindex] = objindex
             return True
-        else:
-            return False
+    return False
