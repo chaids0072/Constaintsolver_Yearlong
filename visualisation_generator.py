@@ -263,7 +263,7 @@ def generate_visualisation_file(result, object_list):
         json.dump(final, outfile)
 
 
-def get_visualisation_json(predicates):
+def get_visualisation_json(predicates,animation_profile):
     """This function is the main function of this module, it will call the other functions
     to manipulate the visualisation file for the unity visualiser.
 
@@ -272,10 +272,6 @@ def get_visualisation_json(predicates):
                                 each stages.
 
     """
-    apfile = "animation_profile.json"
-    file = open(apfile)
-    content1 = file.read()
-    animation_profile = json.loads(content1)
 
     object_list = copy.deepcopy(predicates["objects"])
     stages = copy.deepcopy(predicates["stages"])

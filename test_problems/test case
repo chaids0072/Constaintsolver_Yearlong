@@ -6,5 +6,5 @@ bw05 12 blicks pass, claw position and the distribute x need to improve
 bw06 13 blocks pass, claw position and the distribute x need to improve
 bw07 17 blocks pass, claw position and the distribute x need to improve
 bw08 4 blocks pass, claw postion need to change
-bw09 25 blocks pass, claw postion need to change, and the block is too small
+bw09 25 blocks pass, claw postion need to change, and the block is too small(sometimes the planing domain API may not return plans)
 bw10 40 blocks failed, Suspected timeout.
