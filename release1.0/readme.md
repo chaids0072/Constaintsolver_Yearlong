@@ -15,7 +15,7 @@ eg. python main.py domain_blocks.pddl test_problems/bw01.pdd animation_profile.j
 
 1.0
 
-## Limitation:
+## Limitations
 
 ### Planning domain API
 The planning domain API could only solve the block problems that the total number of block is below 25, otherwise the API has high chance return timeout error
