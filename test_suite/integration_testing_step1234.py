@@ -13,13 +13,27 @@ import copy
 
 
 class integration_testing_step1234(unittest.TestCase):
-    # Test if the total amount of stages is a valid number
+    # Test if the total amount of stages is still the same
     def test_integration_number_of_stages_step1234(self):
+        # amount of stages from step 123
+        domain_file = "../release1.0/domain_blocks.pddl"
+        problem_file = "../release1.0/problems/bw01.pddl"
+        plan = step1.get_plan(domain_file, problem_file)
+        problem_json = step2.get_problem_json(problem_file)
+        stages = step3.get_stages(plan, problem_json, problem_file)
+        objectList = copy.deepcopy(stages["objects"])
+        stages = copy.deepcopy(stages["stages"])
+        register = 1
+        for counter in range(0, len(stages)):
+            if ("add" in stages[counter].keys()):
+                register += 1
+
         # amount of stages from step 4
         fileop = open("../release1.0/visualisation.json")
         strfile = fileop.read()
         st = json.loads(strfile)["visualStages"]
-        self.assertTrue(len(st) > 2)
+        print(register, len(st))
+        self.assertTrue(len(st) == register)
 
     # Test if the each stage has prefab definition
     def test_integration_number_of_prefabs_step1234(self):
