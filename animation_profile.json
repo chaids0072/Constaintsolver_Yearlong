@@ -1,6 +1,10 @@
 {
   "objects": {
-    "default": "Block"
+    "default": "Block",
+    "customobj": [
+      "Claw",
+      "Board"
+    ]
   },
   "shape": {
     "Block": {
@@ -11,6 +15,34 @@
       "color": "randomcolor",
       "width": 80,
       "height": 40
+    },
+    "Claw": {
+      "prefab": "Claw",
+      "color": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 1
+      },
+      "showName": false,
+      "x": 230,
+      "y": 500,
+      "width": 80,
+      "height": 40
+    },
+    "Board": {
+      "prefab": "Board",
+      "color": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 1
+      },
+      "showName": false,
+      "x": 0,
+      "y": 0,
+      "width": "panel_width",
+      "height": 5
     }
   },
   "predicates_rules": {

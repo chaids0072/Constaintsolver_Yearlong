@@ -162,7 +162,7 @@ def solve_all_stages(stages, objects_dic, predicates_rules, space):
     return result
 
 
-def transfer(one_stage, initialobjects, panel_width, panel_height):
+def transfer(one_stage, initialobjects, panel_width, panel_height, padding=20):
     """This function converts the dictionary into the info needed in visualisation file.
     Args:
         one_stage(Dict): a dictionary contains the locaiton of objects for one stage/step
@@ -193,10 +193,13 @@ def transfer(one_stage, initialobjects, panel_width, panel_height):
         x_num = one_stage[obj]["x"]
         y_num = one_stage[obj]["y"]
         width = one_stage[obj]["width"]
+        # set the panel with after we got the panel width
+        if width == "panel_width":
+            width = panel_width - 2 * padding
         height = one_stage[obj]["height"]
         # transfer the position info into position needed in Unity
-        min_x = x_num / panel_width
-        max_x = (x_num + width) / panel_width
+        min_x = (x_num + padding) / panel_width
+        max_x = (x_num + width + padding) / panel_width
         min_y = y_num / panel_height
         max_y = (y_num + height) / panel_height
         position_dic["minX"] = round(min_x, 3)
@@ -232,13 +235,16 @@ def get_panel_size(result, padding=20):
     for stage in lists:
         stageitems = stage["visualSprites"]
         for item in stageitems:
-            new_x = stageitems[item]["x"] + stageitems[item]["width"] + padding
-            new_y = stageitems[item]["y"] + \
-                stageitems[item]["height"] + padding
-            if new_x > max_x:
-                max_x = new_x
-            if new_y > max_y:
-                max_y = new_y
+            if type(stageitems[item]["width"]) is int:
+                new_x = stageitems[item]["x"] + \
+                    stageitems[item]["width"] + 2 * padding
+                if new_x > max_x:
+                    max_x = new_x
+            if type(stageitems[item]["y"]) is int:
+                new_y = stageitems[item]["y"] + \
+                    stageitems[item]["height"] + padding
+                if new_y > max_y:
+                    max_y = new_y
     return max_x, max_y
 
 
@@ -263,29 +269,33 @@ def generate_visualisation_file(result, object_list):
         json.dump(final, outfile)
 
 
-def get_visualisation_json(predicates,animation_profile):
+def add_fixed_objects(object_dic, animation_profile):
+    """This function will added the custom object to the obj_dic
+    Args:
+        object_dic(Dictionary): a object dictionary contain the default objects.
+        animation_profile(Dictionary): the dict to store all information in animation profile.
+    """
+    for obj_name in animation_profile["objects"]["customobj"]:
+        object_dic[obj_name] = animation_profile["shape"][obj_name]
+        object_dic[obj_name]["name"] = obj_name
+
+
+def get_visualisation_json(predicates, animation_profile):
     """This function is the main function of this module, it will call the other functions
     to manipulate the visualisation file for the unity visualiser.
 
     Args:
-        predicates(dictionary): an dictionary contains the 1.objects name and the 2.predicates for
+        predicates(Dictionary): an dictionary contains the 1.objects name and the 2.predicates for
                                 each stages.
+        animation_profile(Dictionary): the dict to store all information in animation profile.
 
     """
 
     object_list = copy.deepcopy(predicates["objects"])
     stages = copy.deepcopy(predicates["stages"])
     predicates_rules = animation_profile["predicates_rules"]
-
     objects_dic = initialise_objects(object_list, animation_profile)
-    objects_dic["Claw"] = {"name": "Claw",
-                           "prefab": "Claw",
-                           "color": {"r": 0.0, "g": 0.0, "b": 0.0, "a": 1.0},
-                           "showName": False,
-                           "x": 230,
-                           "y": 500,
-                           "width": 80,
-                           "height": 40}
+    add_fixed_objects(objects_dic, animation_profile)
     space = custom_functions.init_space(len(object_list))
     result = solve_all_stages(stages, objects_dic, predicates_rules, space)
     generate_visualisation_file(result, list(objects_dic.keys()))
