@@ -8,7 +8,7 @@ In the terminal, with python3 installed, run the following command and it will g
 ```
 python main.py [dommainfile] [problemfile] [animationprofile]
 
-eg. python main.py domain_blocks.pddl test_problems/bw01.pdd animation_profile.json
+eg. python main.py domain_blocks.pddl problems/bw01.pdd animation_profile.json
 ```
 
 ## Versioning
