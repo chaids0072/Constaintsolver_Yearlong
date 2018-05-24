@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module visualisation_generator</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>visualisation_generator</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/yiding/Desktop/unimelb%202018%20Tri1/Year%20Long%20SWEN90014/code/Constaintsolver/release1.0/visualisation_generator.py">/Users/yiding/Desktop/unimelb 2018 Tri1/Year Long SWEN90014/code/Constaintsolver/release1.0/visualisation_generator.py</a></font></td></tr></table>
+    <p><tt>This&nbsp;module&nbsp;will&nbsp;compute&nbsp;the&nbsp;visulisation&nbsp;file&nbsp;by&nbsp;using&nbsp;the&nbsp;stages&nbsp;predicates&nbsp;and&nbsp;animation</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="copy.html">copy</a><br>
+</td><td width="25%" valign=top><a href="custom_functions.html">custom_functions</a><br>
+</td><td width="25%" valign=top><a href="json.html">json</a><br>
+</td><td width="25%" valign=top><a href="random_color.html">random_color</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-add_fixed_objects"><strong>add_fixed_objects</strong></a>(object_dic, animation_profile)</dt><dd><tt>This&nbsp;function&nbsp;will&nbsp;added&nbsp;the&nbsp;custom&nbsp;object&nbsp;to&nbsp;the&nbsp;obj_dic<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;object_dic(Dictionary):&nbsp;a&nbsp;object&nbsp;dictionary&nbsp;contain&nbsp;the&nbsp;default&nbsp;objects.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animation_profile(Dictionary):&nbsp;the&nbsp;dict&nbsp;to&nbsp;store&nbsp;all&nbsp;information&nbsp;in&nbsp;animation&nbsp;profile.</tt></dd></dl>
+ <dl><dt><a name="-applypredicates"><strong>applypredicates</strong></a>(predicate, objects_dic, predicates_rules, space)</dt><dd><tt>update&nbsp;the&nbsp;value&nbsp;of&nbsp;realated&nbsp;obj&nbsp;in&nbsp;the&nbsp;objects_dic&nbsp;by&nbsp;applying&nbsp;the&nbsp;animation&nbsp;rules.<br>
+For&nbsp;example,&nbsp;(on-table&nbsp;a)&nbsp;will&nbsp;set&nbsp;the&nbsp;a's&nbsp;x&nbsp;value&nbsp;by&nbsp;using&nbsp;distributex&nbsp;function&nbsp;and&nbsp;a's<br>
+y&nbsp;value&nbsp;to&nbsp;0.<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;predicate(String):&nbsp;a&nbsp;predicate&nbsp;that&nbsp;need&nbsp;to&nbsp;be&nbsp;solved.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;objects_dic(dictionary):&nbsp;a&nbsp;objects&nbsp;dictionary&nbsp;that&nbsp;contain&nbsp;all&nbsp;the&nbsp;objects<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;its&nbsp;attributes.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;predicates_rules(dictionary):rules&nbsp;defined&nbsp;the&nbsp;animation&nbsp;rule&nbsp;for&nbsp;the&nbsp;predicates<br>
+&nbsp;&nbsp;&nbsp;&nbsp;space(array):&nbsp;an&nbsp;array&nbsp;that&nbsp;will&nbsp;be&nbsp;used&nbsp;for&nbsp;distributex&nbsp;funtion,&nbsp;it&nbsp;remeber&nbsp;the&nbsp;current<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;obj&nbsp;that&nbsp;in&nbsp;the&nbsp;space.</tt></dd></dl>
+ <dl><dt><a name="-check_rule_complete"><strong>check_rule_complete</strong></a>(predicate, objects_dic, predicates_rules)</dt><dd><tt>This&nbsp;funtion&nbsp;will&nbsp;check&nbsp;whether&nbsp;the&nbsp;predicate&nbsp;can&nbsp;be&nbsp;solved.<br>
+It&nbsp;will&nbsp;check&nbsp;all&nbsp;the&nbsp;referenced&nbsp;object&nbsp;value&nbsp;by&nbsp;using&nbsp;the&nbsp;predicates_rules,<br>
+for&nbsp;example,&nbsp;(on&nbsp;a&nbsp;b)&nbsp;as&nbsp;an&nbsp;predicates,&nbsp;the&nbsp;animation&nbsp;rules&nbsp;will&nbsp;say&nbsp;to&nbsp;define<br>
+the&nbsp;position&nbsp;of&nbsp;a,&nbsp;it&nbsp;must&nbsp;know&nbsp;b's&nbsp;x&nbsp;postion&nbsp;and&nbsp;y&nbsp;position&nbsp;first.&nbsp;If&nbsp;b's&nbsp;refereced<br>
+value&nbsp;has&nbsp;not&nbsp;been&nbsp;defined,&nbsp;the&nbsp;check_rule_complete&nbsp;function&nbsp;will&nbsp;return&nbsp;false.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;predicate(string):&nbsp;a&nbsp;predicate&nbsp;that&nbsp;need&nbsp;to&nbsp;be&nbsp;checked,&nbsp;eg.(on-table&nbsp;b).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;objects_dic(dictionary):&nbsp;the&nbsp;current&nbsp;objects&nbsp;dictionary&nbsp;that&nbsp;need&nbsp;to&nbsp;be&nbsp;solved.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;predicates_rules(dictinary):&nbsp;rules&nbsp;defined&nbsp;the&nbsp;animation&nbsp;rule&nbsp;for&nbsp;the&nbsp;predicates.<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;True:&nbsp;if&nbsp;the&nbsp;predicate&nbsp;can&nbsp;be&nbsp;solved.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;False:&nbsp;if&nbsp;the&nbsp;predicate&nbsp;can&nbsp;not&nbsp;be&nbsp;solved.</tt></dd></dl>
+ <dl><dt><a name="-generate_visualisation_file"><strong>generate_visualisation_file</strong></a>(result, object_list)</dt><dd><tt>This&nbsp;function&nbsp;generates&nbsp;the&nbsp;visualisation&nbsp;file.<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;result(Dict):&nbsp;the&nbsp;dict&nbsp;to&nbsp;be&nbsp;converted.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;object_list:&nbsp;list&nbsp;of&nbsp;all&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;objects.</tt></dd></dl>
+ <dl><dt><a name="-get_panel_size"><strong>get_panel_size</strong></a>(result, padding=20)</dt><dd><tt>This&nbsp;function&nbsp;will&nbsp;for&nbsp;loop&nbsp;all&nbsp;the&nbsp;objects&nbsp;in&nbsp;the&nbsp;visualisaiton&nbsp;dictionary,<br>
+and&nbsp;try&nbsp;to&nbsp;find&nbsp;the&nbsp;max_x&nbsp;and&nbsp;max_y&nbsp;of&nbsp;the&nbsp;panel.<br>
+.........max_y<br>
+.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.<br>
+.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.<br>
+.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.<br>
+........max_x<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;result:&nbsp;visualisation&nbsp;dictionary&nbsp;that&nbsp;contain&nbsp;the&nbsp;location&nbsp;of&nbsp;each&nbsp;object<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;different&nbsp;stages.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;padding:&nbsp;padding&nbsp;between&nbsp;the&nbsp;object&nbsp;and&nbsp;the&nbsp;edge&nbsp;of&nbsp;the&nbsp;screen.<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;max_x:&nbsp;the&nbsp;max&nbsp;x&nbsp;of&nbsp;objects.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;max_y:&nbsp;the&nbsp;max&nbsp;y&nbsp;of&nbsp;objects.</tt></dd></dl>
+ <dl><dt><a name="-get_visualisation_json"><strong>get_visualisation_json</strong></a>(predicates, animation_profile)</dt><dd><tt>This&nbsp;function&nbsp;is&nbsp;the&nbsp;main&nbsp;function&nbsp;of&nbsp;this&nbsp;module,&nbsp;it&nbsp;will&nbsp;call&nbsp;the&nbsp;other&nbsp;functions<br>
+to&nbsp;manipulate&nbsp;the&nbsp;visualisation&nbsp;file&nbsp;for&nbsp;the&nbsp;unity&nbsp;visualiser.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;predicates(Dictionary):&nbsp;an&nbsp;dictionary&nbsp;contains&nbsp;the&nbsp;1.objects&nbsp;name&nbsp;and&nbsp;the&nbsp;2.predicates&nbsp;for<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;each&nbsp;stages.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animation_profile(Dictionary):&nbsp;the&nbsp;dict&nbsp;to&nbsp;store&nbsp;all&nbsp;information&nbsp;in&nbsp;animation&nbsp;profile.</tt></dd></dl>
+ <dl><dt><a name="-initialise_objects"><strong>initialise_objects</strong></a>(object_list, animation_profile)</dt><dd><tt>This&nbsp;function&nbsp;initialise&nbsp;objects&nbsp;in&nbsp;the&nbsp;animation&nbsp;profile<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;object_list(List):&nbsp;the&nbsp;list&nbsp;to&nbsp;store&nbsp;all&nbsp;objects.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animation_profile(Dictionary):&nbsp;the&nbsp;dict&nbsp;to&nbsp;store&nbsp;all&nbsp;information&nbsp;in&nbsp;animation&nbsp;profile.<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;unsolved_objects(Dictionary):&nbsp;the&nbsp;objects&nbsp;that&nbsp;are&nbsp;not&nbsp;initialised.</tt></dd></dl>
+ <dl><dt><a name="-solve_all_stages"><strong>solve_all_stages</strong></a>(stages, objects_dic, predicates_rules, space)</dt><dd><tt>This&nbsp;funtion&nbsp;will&nbsp;run&nbsp;through&nbsp;each&nbsp;stage&nbsp;which&nbsp;contains&nbsp;a&nbsp;list&nbsp;of&nbsp;predicates,&nbsp;solve&nbsp;the<br>
+predictaes&nbsp;and&nbsp;get&nbsp;the&nbsp;solved&nbsp;visualistaion&nbsp;file.<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;stages(dictionary):&nbsp;a&nbsp;dictinonary&nbsp;which&nbsp;contain&nbsp;list&nbsp;of&nbsp;predicates<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;different&nbsp;stages/steps.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;objects_dic(dictonary):&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;objects&nbsp;which&nbsp;need&nbsp;to&nbsp;be&nbsp;solved.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;predicates_rules:&nbsp;animation&nbsp;rules&nbsp;for&nbsp;the&nbsp;predicates<br>
+&nbsp;&nbsp;&nbsp;&nbsp;space(array):an&nbsp;array&nbsp;that&nbsp;will&nbsp;be&nbsp;used&nbsp;for&nbsp;distributex&nbsp;funtion,&nbsp;it&nbsp;remeber&nbsp;the&nbsp;current&nbsp;obj<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;that&nbsp;in&nbsp;the&nbsp;space<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;result:&nbsp;visualisation&nbsp;dictionary&nbsp;that&nbsp;contain&nbsp;the&nbsp;location&nbsp;of&nbsp;each&nbsp;object<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;different&nbsp;stages</tt></dd></dl>
+ <dl><dt><a name="-solvepredicates"><strong>solvepredicates</strong></a>(predicates, objects_dic, predicates_rules, space)</dt><dd><tt>This&nbsp;function&nbsp;will&nbsp;pop&nbsp;an&nbsp;predicate&nbsp;from&nbsp;a&nbsp;list&nbsp;of&nbsp;predicates,&nbsp;and&nbsp;try&nbsp;to&nbsp;solve<br>
+it,&nbsp;the&nbsp;predicate&nbsp;will&nbsp;be&nbsp;put&nbsp;back&nbsp;to&nbsp;the&nbsp;predicates&nbsp;list&nbsp;if&nbsp;it&nbsp;can&nbsp;not&nbsp;be&nbsp;solved&nbsp;at<br>
+one&nbsp;turn.&nbsp;The&nbsp;funtion&nbsp;will&nbsp;return&nbsp;true&nbsp;if&nbsp;all&nbsp;the&nbsp;predicates&nbsp;has&nbsp;been&nbsp;solved.<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;predicates(list&nbsp;of&nbsp;String):&nbsp;a&nbsp;list&nbsp;of&nbsp;predicates&nbsp;that&nbsp;need&nbsp;to&nbsp;be&nbsp;solved.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;objects_dic(dictionary):&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;objects&nbsp;that&nbsp;its&nbsp;attribtes&nbsp;has&nbsp;to&nbsp;be&nbsp;solved<br>
+&nbsp;&nbsp;&nbsp;&nbsp;predicates_rules(dictonaru):&nbsp;animation&nbsp;rules&nbsp;of&nbsp;predictates.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;space(array):an&nbsp;array&nbsp;that&nbsp;will&nbsp;be&nbsp;used&nbsp;for&nbsp;distributex&nbsp;funtion,&nbsp;it&nbsp;remeber&nbsp;the&nbsp;current&nbsp;obj<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;that&nbsp;in&nbsp;the&nbsp;space.</tt></dd></dl>
+ <dl><dt><a name="-transfer"><strong>transfer</strong></a>(one_stage, initialobjects, panel_width, panel_height, padding=20)</dt><dd><tt>This&nbsp;function&nbsp;converts&nbsp;the&nbsp;dictionary&nbsp;into&nbsp;the&nbsp;info&nbsp;needed&nbsp;in&nbsp;visualisation&nbsp;file.<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;one_stage(Dict):&nbsp;a&nbsp;dictionary&nbsp;contains&nbsp;the&nbsp;locaiton&nbsp;of&nbsp;objects&nbsp;for&nbsp;one&nbsp;stage/step<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#-initialise_objects">initialise_objects</a>(List):&nbsp;the&nbsp;list&nbsp;to&nbsp;store&nbsp;all&nbsp;objects&nbsp;that&nbsp;needed&nbsp;to&nbsp;be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;shown&nbsp;in&nbsp;the&nbsp;animation&nbsp;profile.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;panel_width(int):&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;animation&nbsp;panel.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;panel_height(int):&nbsp;the&nbsp;height&nbsp;of&nbsp;the&nbsp;animation&nbsp;panel.<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;transfered_stage(Dict):&nbsp;the&nbsp;dict&nbsp;to&nbsp;store&nbsp;all&nbsp;info&nbsp;needed&nbsp;in&nbsp;visualisation&nbsp;file.</tt></dd></dl>
+</td></tr></table>
+</body></html>
